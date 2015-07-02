@@ -59,7 +59,8 @@ function rowcount($sql){
 	//Check for connection variable already set
 	if(!isset($conn)){
 	//Database Connectivity
-	$conn = new mysqli("50.62.209.121:3306", "saurabh", "Hydatabase9119$@","saurabh1233");
+	$conn = new mysqli("50.62.209.121:3306", "saurabh_se", "#8vNp96y","softeng");
+
 	}
 
 	//Check Connection

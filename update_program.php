@@ -8,6 +8,7 @@
 ?>
 <html>
 <head lang="en">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
     <script>
         function cancelAction() {
             var cancel=confirm("Are you sure you want to cancel?")
@@ -29,12 +30,22 @@
     </title>
 
 </head>
-<body id="body-color">
+<body id="body-color"bgcolor="#e0ffff" link="white" vlink="white" alink="white" align="center">
 <form method="POST" action="update_Program_db.php">
+    <div style="text-align: center">
+        <br><br> <h1 style="color:Black;font-family: sans-serif">Update information about a existing program</h1>
+        <style>
+            h1 {
+                font-size: 30px;
+            }
+        </style>
+    </div>
+    <br><br><br><br><br>
     <div id="Update a existing program">
         Select the program to be updated
         <td class="dropdown">
-            <select class="dropdown-menu" name="dd_program_name">
+            <select class="dropdown-menu" required="" name="dd_program_name">
+                <option value="">Select</option>
                 <?php
                 require "db/db.php";
                 $sql = "SELECT program_name FROM program";
@@ -49,9 +60,9 @@
             <br>
 
         <td>
-            New Program Name <br>
-            <input type="text" name="txt_program_name" size="40"><br>
-            <input id="add_button" type="submit" name="submit" value="Update">
+            <br>New Program Name <br>
+            <br><input type="text" name="txt_program_name" required="" size="40"><br>
+           <br> <input id="add_button" type="submit" name="submit" value="Update">
             <input id="cancel_button" type="submit" name="cancel" value="Cancel" onClick='cancelAction();'>
         </td>
     </div>

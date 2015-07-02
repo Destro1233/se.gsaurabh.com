@@ -6,7 +6,7 @@
  * Time: 17:26
  */
 require "db/db.php";
-$role=$_POST['txt_role'];
+$role=$_POST['role'];
 $employee_name=$_POST['dd_employee_name'];
 
 $sql = 'UPDATE Employee SET role = "'.$role.'" WHERE employee_name = "'.$employee_name.'"' ;
