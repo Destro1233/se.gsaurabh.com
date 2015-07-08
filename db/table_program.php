@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html >
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script src= "https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.4/angular-filter.js"></script>
-<body>
- 
-<div ng-app="myApp" ng-controller="customersCtrl">
- 
-<table>
-  <tr ng-repeat="x in programes">
-    <td>{{ x.progname }}</td>
-    <td>{{ x.prognumber }}</td>
-    <td>{{ x.progrelease }}</td>
-  </tr>
-</table>
-</div>
- 
-<script>
-var app = angular.module('myApp', ['angular.filter']);
-app.controller('customersCtrl', function($scope, $http) {
-   $http.get("db/program_db.php")
-   .success(function (response) {$scope.programes = response.records;});
-});
-</script>
- 
-</body>
-</html>
+<?php
+require "db.php";
+
+$sql = "SELECT * FROM program";
+$result = db($sql);
+$table = null;
+if ($result->num_rows > 0) {
+	$table .= "Program Name &nbsp;&nbsp;&nbsp;&nbsp; Number &nbsp;&nbsp;&nbsp;&nbsp; Release";
+	while ($row = $result->fetch_assoc()) {
+		$table .= "&nbsp;".$row['program_name'];
+		$table .= "&nbsp;&nbsp;&nbsp;&nbsp;".$row['program_number'];
+		$table .= "&nbsp;&nbsp;&nbsp;&nbsp;".$row['program_release'];
+		}
+	echo $table;
+
+}
+?>

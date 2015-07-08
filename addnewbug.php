@@ -2,11 +2,12 @@
 <?php
 session_start();
 @include("./function.php");
-/*?>if (priorityFunc($_SESSION['priority'])) {
+if (priorityFunc($_SESSION['priority'])) {
     header("Location: ./index.php");
     exit();
 }
-<?php */ ?>
+include("header.html");
+?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,9 +23,6 @@ session_start();
 <div class="margin custom">
     <body bgcolor="#2e2e2e">
     <form method="post" action="add_new_bug.php">
-        <div style="text-align: center; padding-top: 0px">
-            <h1 style="color:white;font-size: 50px">Bughound</h1>
-        </div>
         <div class="effect8">
             <div class="tableMargin">
                 <table class="table" ng-app="myApp" ng-controller="customersCtrl">
@@ -72,7 +70,7 @@ session_start();
                 <table class="table">
                     <tr>
                         <td class="td">Report Type</td>
-                        <td class="td"><select class="dropdown" name="report_type">
+                        <td class="td"><select class="dropdown" id="report_type" name="report_type">
                                 <option value="coding error">Coding Error</option>
                                 <option value="design issue">Design Issue</option>
                                 <option value="suggestion">Suggestion</option>
@@ -120,7 +118,7 @@ session_start();
                                 $result = db($sql);
 
                                 foreach ($result as $row) {
-                                    echo "<option value=$row[employee_id]>$row[employee_name]</option>";
+                                    echo "<option value=$row[employee_id]>$row[name]</option>";
                                 }
                                 ?>
                             </select>
@@ -141,6 +139,8 @@ session_start();
 				?>
                 
                 <input id="add_button" type="submit" name="submit" value="Submit">
+                <input id="reset" type="reset" name="reset">
+                <a href="home.php"><input type="button" value="Cancel"></a>
                 <br><br><br><br><br><br><br>
             </div>
         </div>

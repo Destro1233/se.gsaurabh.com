@@ -14,7 +14,7 @@ $result = insertdb($sql);
 if($result){
     echo"<br/>Your details have been updated";
     echo "<BR>";
-    echo "<a href='home.php'>Back to main page</a>";
+    echo "<a href='home_manage_database.php'>Back to main page</a>";
 }else{
     echo"<br/>There was some error in adding.";
     echo "<BR>";

@@ -1,3 +1,12 @@
+<?php
+session_start();
+@include("./function.php");
+if (priorityFunc($_SESSION['priority'])) {
+    header("Location: ./index.php");
+    exit();
+}
+include("header.html");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +19,7 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="javascripts/jquery-1.10.12.js"></script>
 </head>
 <body class="dashboard">
 <div id="wrap">
@@ -43,7 +53,7 @@ xmlhttp.open("GET","table_program.php?file="+str,true);
 xmlhttp.send();
 }
 </script>
-<select name="table" id="table">
+<select name="table" id="table1">
 <option></option>
 <option value="program">Program</option>
 <option value="Employee">Employee</option>
@@ -51,11 +61,26 @@ xmlhttp.send();
 <option value="Bug">Bug</option>
 <option value="login">Login</option>
 </select>
+
 <div>
 <textarea class="form-control fixed-width " rows="5" id="input">Col1 Col2 Col3
 Value 1 Value 2 123
 Separate cols with a tab or 4 spaces
 This is a row with only one cell</textarea>
+<script type="text/javascript">
+$( "#table1" )
+.change(function () {
+alert( this.value );
+if ( this.value == "program" ){
+	$( "#input" ).load( "db/table_program.php", function( response, status, xhr ) {
+		if ( status == "error" ) {
+			var msg = "Sorry but there was an error: ";
+			$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+		}
+	});
+}
+}).change();
+</script>
 <div id="controls">
 <div class="row">
 <label for="hdr-style" class="control-label">Header</label>
@@ -96,6 +121,9 @@ This is a row with only one cell</textarea>
 </div>
 <div id="outputTbl"></div>
 </div>
+</div>
+<div id="test">
+
 </div>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 14-06-2015
- * Time: 18:54
- */
+session_start();
+@include("./function.php");
+if (priorityFunc($_SESSION['priority'])) {
+    header("Location: ./index.php");
+    exit();
+}
+include("header.html");
 ?>
 <html>
 <head lang="en">
@@ -34,6 +35,7 @@
 </head>
 <body id="body-color" bgcolor="#e0ffff" link="white" vlink="white" alink="white" align="center">
 <form method="POST" action="add_new_employee_db.php">
+    <center><table width="100%"><tr><td style="text-align: center"> <div style="margin-right: 0; margin-top:">
 
     <div style="text-align: center">
        <br><br> <h1 style="color:Black;font-family: sans-serif">Add new employee</h1>
@@ -64,6 +66,24 @@
 
 </div>
 </form>
+</td><td></td><td></td>
+<td>
+    <?php
+    require "db/db.php";
+
+    $sql = "SELECT * FROM Employee";
+    $result = db($sql);
+    $i = FALSE;
+    if ($result->num_rows > 0) {
+        echo "<table border='2'><tr><th>Employee Name</th><th>Role</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td>".$row['employee_name']."</td>";
+            echo "<td>".$row['Role']."</td>";
+        }
+
+    }
+    ?></div></td></tr></table></center>
+
 
 </body>
 </html>

@@ -1,10 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 15-06-2015
- * Time: 17:09
- */
+session_start();
+@include("./function.php");
+if (priorityFunc($_SESSION['priority'])) {
+header("Location: ./index.php");
+exit();
+}
+include("header.html");
 ?>
 <html>
 <head lang="en">

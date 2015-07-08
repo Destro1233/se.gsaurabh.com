@@ -7,6 +7,7 @@ if (priorityFunc($_SESSION['priority'])) {
 }
 include("header.html");
 ?>
+?>
 <html>
 <head lang="en">
     <link rel="stylesheet" type="text/css" href="./css/home.css">
@@ -26,42 +27,37 @@ include("header.html");
     <meta charset="UTF-8">
     <title>
         <b>
-            Delete Employee
+            Update Functional area
         </b>
     </title>
-
 </head>
-<body id="body-color"bgcolor="#e0ffff" link="white" vlink="white" alink="white" align="center">
-<form method="POST" action="delete_employee_db.php">
-    <div style="text-align: center">
-        <br><br> <h1 style="color:Black;font-family: sans-serif">Delete information about an employee</h1>
-        <style>
-            h1 {
-                font-size: 30px;
-            }
-        </style>
-    </div>
-    <br><br><br><br><br>
-
-    <div id="Delete information about an employee">
-        Select the employee
+<body id="body-color" bgcolor="#e0ffff" link="white" vlink="white" alink="white" align="Center">
+<form method="POST" action="add_functional_area.php">
+    <br><br><br> <h1 style="color:Black;font-family: sans-serif">Update a functional area</h1>
+    <style>
+        h1 {
+            font-size: 25px;
+        }
+    </style>
+    <div id="Update a Functional area">
+        <br><br>
+        Select the program Where functional area is to be added
         <td class="dropdown">
-            <select class="dropdown-menu" required="" name="dd_employee_name">
+            <select class="dropdown-menu" name="dd_program_name" required="">
                 <option value="">Select</option>
                 <?php
                 require "db/db.php";
-                $sql = "SELECT employee_name FROM Employee";
+                $sql = "SELECT * FROM program";
                 $result = db($sql);
                 while ($row = $result->fetch_assoc()) {
-                    $employee_name = $row['employee_name'];
-                    echo '<option name ="'. $employee_name .'">'. $employee_name .'</option>';
-                }
+                    $program_name = $row['program_name'];
+                    echo '<option name ="'. $program_name .'">'. $program_name .'</option>';                }
                 ?>
             </select>
             <br>
 
-        <td>
-            <br><br><input id="add_button" type="submit" name="submit" value="Delete">
+            <br><br><br>
+            <input id="add_button" type="submit" name="submit" value="Confirm">
             <input id="cancel_button" type="submit" name="cancel" value="Cancel" onClick='cancelAction();'>
         </td>
     </div>

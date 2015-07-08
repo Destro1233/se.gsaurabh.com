@@ -1,10 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 15-06-2015
- * Time: 18:52
- */
+session_start();
+@include("./function.php");
+if (priorityFunc($_SESSION['priority'])) {
+    header("Location: ./index.php");
+    exit();
+}
+include("header.html");
 ?>
 <html>
 <head lang="en">
@@ -13,9 +14,6 @@
     <title>Home - Manage Database</title>
 </head>
 <body bgcolor="#000000" link="white" vlink="white" alink="white">
-<div id="content">
-    <img src="./images/logo.jpeg" class="ribbon"/>
-</div>
 <div style="text-align: center">
     <br><br><br><br>
     <h1 style="color:white;font-family: sans-serif">Manage Database</h1>
@@ -38,7 +36,7 @@
     </tr>
     <tr>
         <td><a href="add_functional_area.php" class="glow">Add a new functional area</a><br></td>
-        <td><a href="update_functional_area.php" class="glow">Update a functional area</a><br></td>
+        <td><a href="functional_program.php" class="glow">Update a functional area</a><br></td>
         <td><a href="delete_functional_area.php" class="glow">Delete a functional area</a><br></td>
 
     </tr>

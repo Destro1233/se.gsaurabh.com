@@ -128,11 +128,6 @@ session_start();
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
                             </select>
                         </td>
                     </tr>
@@ -140,8 +135,24 @@ session_start();
                         <td class="td">Resolution</td>
                         <td>
                             <select class="dropdown" name="resolution">
-                                <option value="All">All</option>
-                                <option value="None">None</option>
+                                <option>All</option>
+                                <option> Pending                             </option>
+                                <option >Fixed
+                                </option>
+                                <option >Irreproducible
+                                </option>
+                                <option >Deferred
+                                </option>
+                                <option >As designed
+                                </option>
+                                <option >Can't be fixed
+                                </option>
+                                <option >Withdrawn by reporter
+                                </option>
+                                <option >Need more info
+                                </option>
+                                <option >Disagree with suggestion
+                                </option>
                             </select>
                         </td>
                     </tr>

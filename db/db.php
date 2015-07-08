@@ -74,4 +74,3 @@ function rowcount($sql){
 	return ($rows);
 }
 ?>
-<!-- Pass statement to this function to get result set -->

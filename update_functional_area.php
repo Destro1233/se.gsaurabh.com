@@ -1,10 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 14-06-2015
- * Time: 20:28
- */
+session_start();
+@include("./function.php");
+if (priorityFunc($_SESSION['priority'])) {
+    header("Location: ./index.php");
+    exit();
+}
+include("header.html");
 ?>
 <html>
 <head lang="en">
@@ -32,11 +33,20 @@
 </head>
 <body id="body-color" bgcolor="#e0ffff" link="white" vlink="white" alink="white" align="center">
 <form method="POST" action="update_functional_area_db.php">
+     <div style="margin-right: 0; margin-top:">
+                        <br><br> <h1 style="color:Black;font-family: sans-serif">Update a functional area</h1>
+                        <style>
+                            h1 {
+                                font-size: 30px;
+                            }
+                        </style>
+                    </div>
+                    <br><br><br><br><br>
     <div style="text-align: center">
-        <br><br> <h1 style="color:Black;font-family: sans-serif">Update information about a functional area</h1>
+         <h1 style="color:Black;font-family: sans-serif">Update information about a functional area</h1>
         <style>
             h1 {
-                font-size: 30px;
+                font-size: 20px;
             }
         </style>
     </div>
@@ -48,7 +58,8 @@
                 <option value="">Select</option>
                 <?php
                 require "db/db.php";
-                $sql = "SELECT * FROM Functional_area";
+                $_POST['dd_program_name'];
+                $sql = "Select * from Functional_area where program_id in (Select program_id from program where program_name= '".$_POST['dd_program_name']."')";
                 $result = db($sql);
                 while ($row = $result->fetch_assoc()) {
                     $func_name = $row['func_name'];
@@ -66,5 +77,20 @@
         </td>
     </div>
 </form>
+</td><td></td><td></td>
+<td>
+    <?php
+    $sql = "Select * from Functional_area where program_id in (Select program_id from program where program_name= '".$_POST['dd_program_name']."')";
+    $result = db($sql);
+    $i = FALSE;
+    if ($result->num_rows > 0) {
+        echo "<table border='2'><tr><th>Area Name</th>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td>".$row['func_name']."</td><tr></tr>";
+        }
+
+    }
+    ?></div></td></tr></table></center>
+
 </body>
 </html>

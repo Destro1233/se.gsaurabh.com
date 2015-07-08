@@ -135,7 +135,8 @@ if (isset($resolved_date) && strcmp($resolved_date, "All") != 0) {
 $result = db($sql);
 echo $sql;
 while ($row = mysqli_fetch_array($result)) {
-    echo "<a href=updatebug.php?bugid=".$row['Bug_ID'].">".$row['Bug_ID']."</a></br>";
+    echo "<a href=updatebug.php?bugid=" . $row['Bug_ID'] . ">" . $row['Bug_ID'] . "</a></br>";
+
 }
 
 /*foreach($result as $row){

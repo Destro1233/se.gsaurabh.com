@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="se.gsaurabh.com">
+  <component name="PublishConfigData">
     <serverData>
-      <paths name="se.gsaurabh.com">
+      <paths name="gsaurabh.com">
         <serverdata>
           <mappings>
-            <mapping deploy="se.gsaurabh.com" local="$PROJECT_DIR$" web="/se.gsaurabh.com" />
+            <mapping deploy="se.gsaurabh.com/" local="$PROJECT_DIR$" web="/se.gsaurabh.com/" />
           </mappings>
         </serverdata>
       </paths>
